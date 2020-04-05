@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+
+    <%= image_tag("rd2.png", size: "16x16", rel: "icon") %>
+
+    <title>Leave Feedback</title>
+
+    <!-- Bootstrap Core CSS -->
+    <%#= stylesheet_link_tag "#{Rails.root}/vendor/assets/bootstrap/css/bootstrap.min.css", media: "all" %>
+    <!-- Custom CSS -->
+    <%#= stylesheet_link_tag "/style", media: "all" %>
+    <!-- You can change the theme colors from here -->
+    <%#= stylesheet_link_tag "/blue", media: "all" %>
+    <!-- Rating style -->
+    <%#= stylesheet_link_tag "/rating", media: "all" %>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <%#= javascript_include_tag "/#{Rails.root}/vendor/assets/jquery/jquery.min.js" %>
+    <!-- Bootstrap tether Core JavaScript -->
+    <%#= javascript_include_tag "/#{Rails.root}/vendor/assets/bootstrap/js/popper.min.js" %>
+    <!-- bootstrap -->
+    <%= javascript_include_tag "/#{Rails.root}/vendor/assets/bootstrap/js/bootstrap.min.js" %>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <%#= javascript_include_tag "/jquery.slimscroll" %>
+    <!--Wave Effects -->
+    <%#= javascript_include_tag "/waves" %>
+    <!--Menu sidebar -->
+    <%#= javascript_include_tag "/sidebarmenu" %>
+    <!--stickey kit -->
+    <%= javascript_include_tag "/#{Rails.root}/vendor/assets/sticky-kit-master/dist/sticky-kit.min.js" %>
+    <!--Custom JavaScript -->
+    <%#= javascript_include_tag "/custom" %>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <section id="wrapper">
+        <div class="login-register" style="background-image:url(<%=image_path "background/grey.jpg"%>);">        
+            <div class="login-box card">
+            <div class="card-body">
+                <form class="form-horizontal form-material" id="loginform" action="/" method="get">
+                    <fieldset class="rating">
+                        
+                        <legend>Please rate:</legend>
+                        <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+                        <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+                        <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+                        <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+                        <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                    </fieldset>
+                </form>
+                <form method="post">
+                    <div class="form-group">
+                        <textarea class="textarea_editor form-control" rows="8" placeholder="Enter text ..."></textarea>
+                    </div>
+
+                    <div class="form-group text-center m-t-20">
+                        <div class="col-xs-12">
+                            <button class="btn btn-info btn-md btn-block waves-effect waves-light">Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                
+
+            </div>
+          </div>
+        </div>
+        
+    </section>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+</body>
+
+</html>
