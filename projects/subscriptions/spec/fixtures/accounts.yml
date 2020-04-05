@@ -1,6 +1,0 @@
-localhost:
-  name: My first account
-  full_domain: test.host
-otherhost:
-  name: Another account
-  full_domain: other.host
