@@ -63,33 +63,36 @@ int PreorderParse(Node *root)
 {
     if (root != NULL)
     {
-        cout << "Data in a node is: " << root->data << endl;
+        cout << root->data;
         PreorderParse(root->left);
         PreorderParse(root->right);
     }
     return 0;
 }
 int counter = 0;
-int numberOfUnivalTree(Node *root)
+void numberOfUnivalTree(Node *root)
 {
-    if (root == NULL)
+    if (root->left == NULL && root->right == NULL)
     {
         counter++;
     }
-    else if (root->left != NULL)
+    else if (root->left != NULL && root->right != NULL)
+    {
+        numberOfUnivalTree(root->left);
+        numberOfUnivalTree(root->right);
+        if (root->data == root->left->data && root->data == root->right->data)
+        {
+            counter++;
+        }
+    }
+    else if (root->left != NULL && root->right == NULL)
     {
         numberOfUnivalTree(root->left);
     }
-    else if (root->right != NULL)
+    else if (root->left == NULL && root->right != NULL)
     {
         numberOfUnivalTree(root->right);
     }
-    else if (root->left != NULL && root->right && root->data == root->left->data && root->right->data)
-    {
-        counter++;
-    }
-    cout << "Total Number of unival Trees are:" << counter << endl;
-    return 0;
 }
 
 int main()
@@ -108,8 +111,10 @@ int main()
     Insert(leftNode, 1, "right");
     Insert(rightNode, 0, "right");
 
-    cout << "Parsing Tree Now" << endl;
+    cout << "Data in a node is: " << endl;
     PreorderParse(root);
+    cout << endl;
     numberOfUnivalTree(root);
+    cout << "Total Number of unival Trees are:" << counter << endl;
     return 0;
 }
