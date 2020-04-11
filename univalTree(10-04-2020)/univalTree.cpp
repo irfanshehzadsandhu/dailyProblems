@@ -25,16 +25,18 @@ using namespace std;
 struct Node
 {
     int data;
+    int level;
     Node *left;
     Node *right;
 };
 
-Node *Insert(Node *parentNode, int data, string direction = "root")
+Node *Insert(Node *parentNode, int data, int level, string direction = "root")
 {
     if (direction == "root")
     {
         Node *newNode = new Node();
         newNode->data = data;
+        newNode->level = level;
         newNode->left = NULL;
         newNode->right = NULL;
         return newNode;
@@ -43,6 +45,7 @@ Node *Insert(Node *parentNode, int data, string direction = "root")
     {
         Node *newNode = new Node();
         newNode->data = data;
+        newNode->level = level;
         newNode->left = NULL;
         newNode->right = NULL;
         parentNode->left = newNode;
@@ -52,6 +55,7 @@ Node *Insert(Node *parentNode, int data, string direction = "root")
     {
         Node *newNode = new Node();
         newNode->data = data;
+        newNode->level = level;
         newNode->left = NULL;
         newNode->right = NULL;
         parentNode->right = newNode;
@@ -72,25 +76,18 @@ int PreorderParse(Node *root)
 int counter = 0;
 void numberOfUnivalTree(Node *root)
 {
-    if (root->left == NULL && root->right == NULL)
+
+    if (root != NULL)
     {
-        counter++;
-    }
-    else if (root->left != NULL && root->right != NULL)
-    {
-        numberOfUnivalTree(root->left);
-        numberOfUnivalTree(root->right);
-        if (root->data == root->left->data && root->data == root->right->data)
+        if (root->left == NULL && root->right == NULL)
         {
             counter++;
         }
-    }
-    else if (root->left != NULL && root->right == NULL)
-    {
+        if (root->left != NULL && root->right != NULL && root->data == root->left->data && root->data == root->right->data)
+        {
+            counter++;
+        }
         numberOfUnivalTree(root->left);
-    }
-    else if (root->left == NULL && root->right != NULL)
-    {
         numberOfUnivalTree(root->right);
     }
 }
@@ -98,18 +95,18 @@ void numberOfUnivalTree(Node *root)
 int main()
 {
     Node *root = NULL;
-    root = Insert(root, 0);
+    root = Insert(root, 0, 0);
 
-    Node *leftNode = Insert(root, 1, "left");
+    Node *leftNode = Insert(root, 1, 1, "left");
 
-    Node *rightNode = Insert(root, 0, "right");
+    Node *rightNode = Insert(root, 0, 1, "right");
 
-    leftNode = Insert(rightNode, 1, "left");
+    leftNode = Insert(rightNode, 1, 2, "left");
 
-    leftNode = Insert(leftNode, 1, "left");
+    Insert(leftNode, 1, 3, "left");
 
-    Insert(leftNode, 1, "right");
-    Insert(rightNode, 0, "right");
+    Insert(leftNode, 1, 3, "right");
+    Insert(rightNode, 0, 2, "right");
 
     cout << "Data in a node is: " << endl;
     PreorderParse(root);
